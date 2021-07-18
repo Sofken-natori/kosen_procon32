@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KosenProcon32", "KosenProcon32.vcxproj", "{32D661C4-C7BF-44F5-95E2-3AF358F4C0FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32D661C4-C7BF-44F5-95E2-3AF358F4C0FD}.Debug|x64.ActiveCfg = Debug|x64
+		{32D661C4-C7BF-44F5-95E2-3AF358F4C0FD}.Debug|x64.Build.0 = Debug|x64
+		{32D661C4-C7BF-44F5-95E2-3AF358F4C0FD}.Release|x64.ActiveCfg = Release|x64
+		{32D661C4-C7BF-44F5-95E2-3AF358F4C0FD}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {330E8C40-0498-450F-A03A-4E3A1F96DF58}
+	EndGlobalSection
+EndGlobal
