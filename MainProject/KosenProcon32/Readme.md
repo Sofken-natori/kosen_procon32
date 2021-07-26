@@ -23,7 +23,7 @@ Checkscore.cpp
 Main.cpp
 
 ### Other
-* プロジェクトファイル関連
+* プロジェクトファイル関連  
 KosenProcon32.sln  
 KosenProcon32.vcxproj  
 KosenProcon32.vcxproj.filters  
