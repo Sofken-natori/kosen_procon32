@@ -1,0 +1,6 @@
+/.vs/
+/.git/
+
+*.exe
+*_log.html
+*.user
