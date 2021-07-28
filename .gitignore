@@ -1,5 +1,9 @@
 /.vs/
 /.git/
+/MainProject/KosenProcon32/.vs/
+/MainProject/KosenProcon32/App/AS_DEBUG/
+/MainProject/KosenProcon32/App/example/
+/MainProject/KosenProcon32/App/json/
 
 *.exe
 *_log.html
