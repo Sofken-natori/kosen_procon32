@@ -12,8 +12,7 @@ Checkscore.hpp(スコア比較用)
 ### 定義
 Restore.cpp  
 Algorithm.cpp  
-GUI.cpp  
-KosenProcon32.cpp  
+GUI.cpp    
 HTTPCommunication.cpp  
 Game.cpp  
 Team.cpp  
