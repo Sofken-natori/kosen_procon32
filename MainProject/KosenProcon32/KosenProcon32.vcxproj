@@ -108,7 +108,14 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="CheckScore.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="HTTPCommunication.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Restore.cpp" />
+    <ClCompile Include="Team.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -233,6 +240,16 @@
     <None Include="App\example\shader\2d\swirl.hlsl">
       <FileType>Document</FileType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Algorithm.hpp" />
+    <ClInclude Include="CheckScore.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GUI.hpp" />
+    <ClInclude Include="HTTPCommunication.hpp" />
+    <ClInclude Include="KosenProcon32.hpp" />
+    <ClInclude Include="Restore.hpp" />
+    <ClInclude Include="Team.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
