@@ -1,17 +1,23 @@
 #pragma once
 
 #include "KosenProcon32.hpp"
+#include"Generator.hpp"
 
 namespace Procon32 {
-
 
 	class GUI
 	{
 	private:
 
 
+		Font bigFont;
+		Font smallFont;
+		
+	
 
 
+
+		Font testFont;
 
 	public:
 

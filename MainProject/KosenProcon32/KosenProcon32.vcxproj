@@ -111,6 +111,7 @@
     <ClCompile Include="Algorithm.cpp" />
     <ClCompile Include="CheckScore.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Generator.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="HTTPCommunication.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -245,6 +246,7 @@
     <ClInclude Include="Algorithm.hpp" />
     <ClInclude Include="CheckScore.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Generator.hpp" />
     <ClInclude Include="GUI.hpp" />
     <ClInclude Include="HTTPCommunication.hpp" />
     <ClInclude Include="KosenProcon32.hpp" />
