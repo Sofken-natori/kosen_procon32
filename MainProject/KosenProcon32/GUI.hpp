@@ -1,7 +1,6 @@
 #pragma once
 
 #include "KosenProcon32.hpp"
-#include"Generator.hpp"
 
 namespace Procon32 {
 
