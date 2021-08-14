@@ -2,13 +2,10 @@
 
 void Procon32::GUI::draw()
 {
-	//確認用　いずれ消してください
-	bigFont(U"YokoLength is").draw(0, 0, Palette::Black);
-	smallFont(U"TateLength is").draw(0, 50, Palette::Blue);
-	bigFont(YokoLength).draw(300, 0, Palette::Black);
-	smallFont(TateLength).draw(300, 50, Palette::Blue);
-
-	
+	testFont(U"Yoko").draw(0, 0, Palette::Black);
+	testFont(U"Tate").draw(0, 50, Palette::Black);
+	testFont(YokoLength).draw(60, 0, Palette::Black);
+	testFont(TateLength).draw(60, 50, Palette::Black);
 }
 
 Procon32::GUI::GUI()
@@ -19,7 +16,7 @@ Procon32::GUI::GUI()
 
 
 
-	testFont = Font(5, Typeface::Bold);
+	testFont = Font(20, Typeface::Bold);
 }
 
 Procon32::GUI::~GUI()
