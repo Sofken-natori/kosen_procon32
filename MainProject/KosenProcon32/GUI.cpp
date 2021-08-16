@@ -1,4 +1,5 @@
 #include"GUI.hpp"
+#include"Generator.hpp"
 
 void Procon32::GUI::draw()
 {
@@ -6,6 +7,8 @@ void Procon32::GUI::draw()
 	testFont(U"Tate").draw(0, 50, Palette::Black);
 	testFont(YokoLength).draw(60, 0, Palette::Black);
 	testFont(TateLength).draw(60, 50, Palette::Black);
+
+	
 }
 
 Procon32::GUI::GUI()
@@ -21,5 +24,4 @@ Procon32::GUI::GUI()
 
 Procon32::GUI::~GUI()
 {
-
 }

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "KosenProcon32.hpp"
 
 namespace Procon32 {
