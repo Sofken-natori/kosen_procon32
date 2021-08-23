@@ -10,11 +10,6 @@ namespace Procon32 {
 
 		Font bigFont;
 		Font smallFont;
-		
-	
-
-
-
 		Font testFont;
 
 	public:

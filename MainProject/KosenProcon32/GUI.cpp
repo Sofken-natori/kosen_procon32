@@ -8,6 +8,8 @@ void Procon32::GUI::draw()
 	testFont(YokoLength).draw(60, 0, Palette::Black);
 	testFont(TateLength).draw(60, 50, Palette::Black);
 
+	Generator a;
+
 	
 }
 

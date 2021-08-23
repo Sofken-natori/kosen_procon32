@@ -7,18 +7,18 @@ namespace Procon32 {
 	{
 	private:
 
+		Array<String>origin = { U"0",U"1",U"2",U"3",U"4",U"5",U"6",U"7",U"8",U"9",U"a",U"b",U"c",U"d",U"e",U"f" };
+
 	public:
 
 
-		std::vector<std::vector<String>>moto;
-		std::vector<std::vector<String>>zahyou;
-		std::vector<std::vector<int>>kaitenn;
+		Array<Array<String>>MotoZahyou;
+		Array<Array<String>>Zahyou;
+		Array<Array<int>>Kaitenn;
 
+	
 
-		void generate();
-
-
-
+		void generating();
 
 		Generator();
 		~Generator();
