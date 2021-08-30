@@ -123,9 +123,6 @@
     <ClCompile Include="Team.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Generator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -422,9 +419,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Team.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Generator.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

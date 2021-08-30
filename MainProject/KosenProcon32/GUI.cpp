@@ -1,16 +1,19 @@
 #include"GUI.hpp"
-#include"Generator.hpp"
 
 void Procon32::GUI::draw()
 {
 	testFont(U"Yoko").draw(0, 0, Palette::Black);
 	testFont(U"Tate").draw(0, 50, Palette::Black);
 	testFont(YokoLength).draw(60, 0, Palette::Black);
-	testFont(TateLength).draw(60, 50, Palette::Black);
-
-	Generator a;
+	testFont(TateLength).draw(60, 50, Palette::Black);	
 
 	
+	
+}
+
+void Procon32::GUI::dataUpdate()
+{
+
 }
 
 Procon32::GUI::GUI()

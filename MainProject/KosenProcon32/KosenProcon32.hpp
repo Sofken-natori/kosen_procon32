@@ -8,11 +8,13 @@
 namespace Procon32 {
 
 	//(2Å`16)
-	const int32 YokoLength = 10;
-	const int32 TateLength = 5;
+	constexpr int32 YokoLength = 10;
+	constexpr int32 TateLength = 5;
 	//(1Å`500)
-	const int32 SelectCost = 25;
+	constexpr int32 SelectCost = 25;
 	//(1Å`100)
-	const int32 TurnCost = 50;
+	constexpr int32 TurnCost = 50;
+
+
 
 }
