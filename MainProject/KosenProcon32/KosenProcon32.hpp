@@ -1,6 +1,8 @@
 #pragma once
 
 #include <Siv3D.hpp>
+#include<opencv2/opencv.hpp>
+#include<curl/curl.h>
 #include<condition_variable>
 #include <future>
 #include<random>
