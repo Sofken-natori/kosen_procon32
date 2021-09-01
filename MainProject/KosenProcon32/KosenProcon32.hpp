@@ -17,6 +17,30 @@ namespace Procon32 {
 	//(1～100)
 	constexpr int32 TurnCost = 50;
 
+	enum class ConnectionStatusCode : uint32 {
+		//なんでもない状態
+		Null,
 
+		//正常
+		OK,
+
+		//試合開始前にアクセスした場合
+		TooEarly,
+
+		//参加していない試合に対するリクエスト
+		//深刻なエラー、強制終了をお勧めする。
+		InvailedMatches,
+
+		//トークンが間違っているもしくは存在しない場合
+		//深刻なエラー、強制終了をお勧めする。
+		InVailedToken,
+
+		//curl_easy_perform() is failed.
+		//たぶん鯖落ちかタイムアウト、再送して連続するようだったら強制終了をお勧めする。
+		ConnectionLost,
+
+		//深刻なエラー、強制終了をお勧めする。
+		Unknownerror
+	};
 
 }
