@@ -4,6 +4,8 @@
 ### 開発環境
 * Visual Studio 2019
 * OpenSiv3D(v0.4.3)
+* OpenCV(v4.1.1)
+* libcurl
 
 
 
