@@ -27,3 +27,4 @@ Main.cpp
 KosenProcon32.sln  
 KosenProcon32.vcxproj  
 KosenProcon32.vcxproj.filters  
+KosenProcon32.vcxproj.user  
