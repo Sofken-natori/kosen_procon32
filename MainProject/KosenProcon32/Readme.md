@@ -8,6 +8,7 @@ HTTPCommunication.hpp(通信)
 Game.hpp(試合のクラス)  
 Team.hpp(チーム情報)  
 Checkscore.hpp(スコア比較用)  
+CommunicationData.hpp(通信部データ構造体)  
 
 ### 定義
 Restore.cpp  
