@@ -102,15 +102,27 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> Algo_dev
     <ClCompile Include="Algorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CheckScore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> Algo_dev
     <ClCompile Include="HTTPCommunication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -120,9 +132,12 @@
     <ClCompile Include="Team.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> Algo_dev
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -397,6 +412,7 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="GUI.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -406,15 +422,32 @@
     <ClInclude Include="KosenProcon32.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="Algorithm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> Algo_dev
     <ClInclude Include="CheckScore.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="HTTPCommunication.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="GUI.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HTTPCommunication.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KosenProcon32.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> Algo_dev
     <ClInclude Include="Restore.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
