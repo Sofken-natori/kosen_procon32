@@ -21,6 +21,9 @@ Procon32::HTTPCommunication::HTTPCommunication()
 	}
 
 	//Setting Header
+	postList = NULL;
+	otherList = NULL;
+
 
 	//Handle-initilize
 

@@ -1,5 +1,6 @@
 ﻿#include"KosenProcon32.hpp"
 #include"GUI.hpp"
+#include"HTTPCommunication.hpp"
 
 void Main()
 {
@@ -9,6 +10,7 @@ void Main()
 	Scene::SetBackground(ColorF(0.8, 0.9, 1.0));
 
 	Procon32::GUI gui;
+	Procon32::HTTPCommunication http();
 
 	gui.dataUpdate();
 

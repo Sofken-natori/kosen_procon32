@@ -2,6 +2,9 @@
 #include<Siv3D.hpp>
 #include<opencv2/opencv.hpp>
 #include<curl/curl.h>
+#include<mutex>
+#include<condition_variable>
+#include<future>
 
 namespace Procon32 {
 
@@ -38,9 +41,10 @@ namespace Procon32 {
 
 	};
 
-
-
-
-
-
+	template <class... Args, std::enable_if_t<s3d::detail::format_validation<Args...>::value>* = nullptr>
+	inline void SafeConsole(const Args & ... args) {
+		static std::mutex consoleMtx;
+		std::lock_guard<std::mutex> lock(consoleMtx);
+		Console << Format(args...);
+	}
 }
