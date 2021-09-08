@@ -19,8 +19,5 @@ namespace Procon32 {
 
 		//POST-URL
 		String POSThost;
-
-		//í êMåãâ 
-		ConnectionStatusCode connectionCode;
 	};
 }

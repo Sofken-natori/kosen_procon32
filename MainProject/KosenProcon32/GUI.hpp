@@ -11,7 +11,19 @@ namespace Procon32 {
 		Font bigFont;
 		Font smallFont;
 
+		const String Game_Info1 = U"Time";
+		const String Game_Info2 = U"Count";
+		const String Game_Info3 = U"Result";
 
+		//‰æ‘œî•ñ@–|–ó‚ ‚Á‚Ä‚é‚©‚í‚©‚ç‚ñ
+		const String Image_Info1 = U"Magig Number";
+		const String Image_Info2 = U"Segments";
+		const String Image_Info3 = U"Selectable Times";
+		const String Image_info4 = U"Rate";
+		const String Image_info5 = U"Image Size";
+		const String Image_info6 = U"Max RGB";
+
+		
 
 		Font test;
 
