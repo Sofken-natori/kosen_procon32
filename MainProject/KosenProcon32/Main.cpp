@@ -4,6 +4,7 @@
 
 void Main()
 {
+
 	Window::Resize(1280, 720);
 	Window::SetTitle(U"KosenProcon32");
 	Scene::SetScaleMode(ScaleMode::AspectFit);
