@@ -12,4 +12,4 @@
 /MainProject/KosenProcon32/Intermediate/KosenProcon32/Debug/*
 /MainProject/KosenProcon32/Intermediate/KosenProcon32/Release/*
 !libcurl.dll
-!libcurl-d.lib
+!libcurl-d.dll
