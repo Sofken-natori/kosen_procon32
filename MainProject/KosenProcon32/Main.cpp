@@ -5,28 +5,28 @@
 #include"HTTPCommunication.hpp"
 
 
-void GETImageFile()
-{
-	CURL* curl;
-	FILE* fp;
-	CURLcode res;
-	const char* URL = "https://procon32-practice.kosen.work/problem.ppm";
-	char outfilename[FILENAME_MAX] = "bbb.ppm";
-	curl = curl_easy_init();
-
-	fp = fopen(outfilename, "wb");
-	curl_easy_setopt(curl, CURLOPT_URL, URL);
-	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, fwrite);
-	curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
-	res = curl_easy_perform(curl);
-	fclose(fp);
-	curl_easy_cleanup(curl);
-}
+//void GETImageFile()
+//{
+//	CURL* curl;
+//	FILE* fp;
+//	CURLcode res;
+//	const char* URL = "https://procon32-practice.kosen.work/problem.ppm";
+//	char outfilename[FILENAME_MAX] = "bbb.ppm";
+//	curl = curl_easy_init();
+//
+//	fp = fopen(outfilename, "wb");
+//	curl_easy_setopt(curl, CURLOPT_URL, URL);
+//	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, fwrite);
+//	curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+//	res = curl_easy_perform(curl);
+//	fclose(fp);
+//	curl_easy_cleanup(curl);
+//}
 
 void Main()
 {
-
-	GETImageFile();
+	Procon32::HTTPCommunication http;
+	http.GETProblemImage();
 
 
 
@@ -37,7 +37,6 @@ void Main()
 	Scene::SetBackground(ColorF(0.8, 0.9, 1.0));
 
 	Procon32::GUI gui;
-	Procon32::HTTPCommunication http;
 
 	gui.dataUpdate();
 

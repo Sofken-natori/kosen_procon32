@@ -44,9 +44,9 @@ Procon32::GUI::GUI()
 	//ProblemImage.png
 	//RestoreImage.png
 	//AfterImage.png
-	//ProblemImage = Texture(U"example/windmill.png",TextureDesc::Mipped);
-	//RestoreImage = Texture(U"example/windmill.png",TextureDesc::Mipped);
-	//AfterImage = Texture(U"example/windmill.png", TextureDesc::Mipped);
+	ProblemImage = Texture(U"example/windmill.png",TextureDesc::Mipped);
+	RestoreImage = Texture(U"example/windmill.png",TextureDesc::Mipped);
+	AfterImage = Texture(U"example/windmill.png", TextureDesc::Mipped);
 
 }
 
