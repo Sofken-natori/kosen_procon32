@@ -21,8 +21,6 @@ void Procon32::HTTPCommunication::GETProblemImage()
 Procon32::HTTPCommunication::HTTPCommunication()
 {
 	URL = "https://procon32-practice.kosen.work/problem.ppm";
-
-
 }
 
 Procon32::HTTPCommunication::~HTTPCommunication()
