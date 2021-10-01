@@ -9,6 +9,8 @@
 *_log.html
 *.user
 
+/MainProject/GUI/Intermediate/KosenProcon32-GUI_unit/Debug/*
+/MainProject/GUI/Intermediate/KosenProcon32-GUI_unit/Release/*
 /MainProject/Computation/x64/Debug/*
 /MainProject/Computation/x64/Release/*
 !libcurl.dll
