@@ -1,4 +1,4 @@
-## プログラムソース
+## Computation
 ### 宣言
 Algorithm.hpp(アルゴリズム)  
 CommunicationData.hpp(通信部データ構造体)  
