@@ -1,15 +1,15 @@
 /.vs/
 /.git/
-/MainProject/KosenProcon32/.vs/
-/MainProject/KosenProcon32/App/AS_DEBUG/
-/MainProject/KosenProcon32/App/example/
-/MainProject/KosenProcon32/App/json/
+/MainProject/GUI/.vs/
+/MainProject/GUI/App/AS_DEBUG/
+/MainProject/GUI/App/example/
+/MainProject/GUI/App/json/
 
 *.exe
 *_log.html
 *.user
 
-/MainProject/KosenProcon32/Intermediate/KosenProcon32/Debug/*
-/MainProject/KosenProcon32/Intermediate/KosenProcon32/Release/*
+/MainProject/Computation/x64/Debug/*
+/MainProject/Computation/x64/Rele/*
 !libcurl.dll
 !libcurl-d.dll
