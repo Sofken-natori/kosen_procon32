@@ -1,5 +1,6 @@
 /.vs/
 /.git/
+/MainProject/Computation/.vs/
 /MainProject/GUI/.vs/
 /MainProject/GUI/App/AS_DEBUG/
 /MainProject/GUI/App/example/
@@ -13,5 +14,6 @@
 /MainProject/GUI/Intermediate/KosenProcon32-GUI_unit/Release/*
 /MainProject/Computation/x64/Debug/*
 /MainProject/Computation/x64/Release/*
+/MainProject/Computation/x64/lib/*
 !libcurl.dll
 !libcurl-d.dll
