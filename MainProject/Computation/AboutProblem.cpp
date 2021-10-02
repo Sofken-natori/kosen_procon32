@@ -17,7 +17,7 @@ void Procon32::AboutProblem::GETProblemInfo()
 		{
 		case 0:
 			//MagicNumber
-			data.Set(line, "None", i);
+			data.SetProblemInfo(line, "None", i);
 			break;
 		case 1:
 			//Width,Height
@@ -27,14 +27,14 @@ void Procon32::AboutProblem::GETProblemInfo()
 			for (int j = 0; j < findSpace; j++)first += line[j];
 			for (int j = findSpace; j < line.size(); j++)second += line[j];
 
-			data.Set(first, second, i);
+			data.SetProblemInfo(first, second, i);
 
 			break;
 		case 2:
 			//SelectableTimes
 
 			line.erase(0, 2);
-			data.Set(line, "None", i);
+			data.SetProblemInfo(line, "None", i);
 
 			break;
 		case 3:
@@ -45,7 +45,7 @@ void Procon32::AboutProblem::GETProblemInfo()
 			for (int j = 0; j < findSpace; j++)first += line[j];
 			for (int j = findSpace; j < line.size(); j++)second += line[j];
 
-			data.Set(first, second, i);
+			data.SetProblemInfo(first, second, i);
 
 			break;
 		case 4:
@@ -55,12 +55,12 @@ void Procon32::AboutProblem::GETProblemInfo()
 			for (int j = 0; j < findSpace; j++)first += line[j];
 			for (int j = findSpace; j < line.size(); j++)second += line[j];
 
-			data.Set(first, second, i);
+			data.SetProblemInfo(first, second, i);
 
 			break;
 		case 5:
 			//MaxRGBChannel
-			data.Set(line, "None", i);
+			data.SetProblemInfo(line, "None", i);
 			break;
 		}
 	}
@@ -70,9 +70,46 @@ void Procon32::AboutProblem::GETProblemInfo()
 	data.ShowAll();
 }
 
+//GUI“Ç‚ÝŽæ‚è—p‚É‰æ‘œî•ñ‚Ì.txt‚Ö‚Ì‘‚«ž‚Ý
 void Procon32::AboutProblem::WRITEProblemInfo()
 {
+	std::string filename = "ProblemInfo.txt";
+	std::ofstream writing_file;
+	writing_file.open(filename, std::ios::trunc);
 
+	Procon32::GameData data;
+
+	for (int i = 0; i < 6; i++)
+	{
+		switch (i)
+		{
+		case 0:
+			writing_file << data.GetProblemInfo(i);
+			writing_file << std::endl;
+			break;
+		case 1:
+			writing_file << data.GetProblemInfo(i);
+			writing_file << std::endl;
+			break;
+		case 2:
+			writing_file << data.GetProblemInfo(i);
+			writing_file << std::endl;
+			break;
+		case 3:
+			writing_file << data.GetProblemInfo(i);
+			writing_file << std::endl;
+			break;
+		case 4:
+			writing_file << data.GetProblemInfo(i);
+			writing_file << std::endl;
+			break;
+		case 5:
+			writing_file << data.GetProblemInfo(i);
+			break;
+		}
+	}
+
+	writing_file.close();
 }
 
 Procon32::AboutProblem::AboutProblem()

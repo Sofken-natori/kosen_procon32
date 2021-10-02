@@ -1,6 +1,6 @@
 #include"GameData.hpp"
 
-void Procon32::GameData::Set(std::string s1,std::string s2,int num)
+void Procon32::GameData::SetProblemInfo(std::string s1,std::string s2,int num)
 {
 	switch (num)
 	{
@@ -9,18 +9,18 @@ void Procon32::GameData::Set(std::string s1,std::string s2,int num)
 		break;
 	case 1:
 
-		Width = std::stoi(s1);
-		Height = std::stoi(s2);
+		Width = stoi(s1);
+		Height = stoi(s2);
 
 		break;
 	case 2:
 
-		SelectableTimes = std::stoi(s1);
+		SelectableTimes = stoi(s1);
 		break;
 	case 3:
 
-		SelectiveRate = std::stoi(s1);
-		ExchangeRate = std::stoi(s2);
+		SelectiveRate = stoi(s1);
+		ExchangeRate = stoi(s2);
 
 		break;
 	case 4:
@@ -32,6 +32,44 @@ void Procon32::GameData::Set(std::string s1,std::string s2,int num)
 	case 5:
 
 		MaxRGBChannel = stoi(s1);
+		break;
+	}
+}
+
+std::string Procon32::GameData::GetProblemInfo(int num)
+{
+	std::string A, B, C;
+
+	switch (num)
+	{
+	case 0:
+		return MagicNumber;
+		break;
+	case 1:
+		A = std::to_string(Width);
+		B = std::to_string(Height);
+		C = A + " " + B;
+		return C;
+		break;
+	case 2:
+		C = std::to_string(SelectableTimes);
+		return C;
+		break;
+	case 3:
+		A = std::to_string(SelectiveRate);
+		B = std::to_string(ExchangeRate);
+		C = A + " " + B;
+		return C;
+		break;
+	case 4:
+		A = std::to_string(PixelWidth);
+		B = std::to_string(PixelHeight);
+		C = A + " " + B;
+		return C;
+		break;
+	case 5:
+		C = std::to_string(MaxRGBChannel);
+		return C;
 		break;
 	}
 }

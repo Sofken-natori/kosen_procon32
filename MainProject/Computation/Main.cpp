@@ -16,6 +16,7 @@ int main()
 
     Procon32::AboutProblem pp;
     pp.GETProblemInfo();
+    pp.WRITEProblemInfo();
 
     std::cout << "System end" << std::endl;
 

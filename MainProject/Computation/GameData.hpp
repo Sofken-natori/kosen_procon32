@@ -19,7 +19,8 @@ namespace Procon32
 
 	public:
 
-		void Set(std::string S1,std::string S2,int num);
+		void SetProblemInfo(std::string S1,std::string S2,int num);
+		std::string GetProblemInfo(int num);
 		void ShowAll();
 
 		GameData();
