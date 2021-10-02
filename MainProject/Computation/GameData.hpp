@@ -19,8 +19,8 @@ namespace Procon32
 
 	public:
 
-
-
+		void Set(std::string S1,std::string S2,int num);
+		void ShowAll();
 
 		GameData();
 		~GameData();

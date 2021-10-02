@@ -1,19 +1,23 @@
 #include"KosenProcon32.hpp"
 #include"HTTPCommunication.hpp"
+#include"AboutProblem.hpp"
 
 
 int main()
 {
     cv::Mat image = cv::imread("bbb.ppm");
     imshow("", image);
-    cv::waitKey();
+    cv::waitKey(0);
 
     
 
-    Procon32::HTTPCommunication http;
-    http.GETProblem();
+    //Procon32::HTTPCommunication http;
+    //http.GETProblem();
 
-    std::cout << "end" << std::endl;
+    Procon32::AboutProblem pp;
+    pp.GETProblemInfo();
+
+    std::cout << "System end" << std::endl;
 
     return 0;
 }
