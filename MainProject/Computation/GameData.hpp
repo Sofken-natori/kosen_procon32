@@ -7,6 +7,10 @@ namespace Procon32
 	{
 	private:
 
+		static std::string ProblemImagePath;
+		static std::string RestoreImagePath;
+		static std::string AfterImagePath;
+
 		static std::string MagicNumber;
 		static int Width;
 		static int Height;

@@ -10,7 +10,6 @@ namespace Procon32 {
 
 		CURL* curl;
 		FILE* fp;
-		FILE* fp2;
 		CURLcode res;
 
 		const char* GET_URL;
