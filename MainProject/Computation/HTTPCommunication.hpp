@@ -10,11 +10,15 @@ namespace Procon32 {
 
 		CURL* curl;
 		FILE* fp;
+		FILE* fp2;
 		CURLcode res;
 
 		const char* GET_URL;
 		const char* POST_URL;
 
+		struct curl_slist* postList = NULL;
+
+		
 	public:
 
 		void GETProblem();
