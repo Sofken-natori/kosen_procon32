@@ -7,6 +7,12 @@ void Procon32::HTTPCommunication::GETProblem()
 	curl = curl_easy_init();
 
 	fp = fopen("Data/bbb.ppm", "wb");
+	if (!fp)
+	{
+		std::cerr << "The file could not be opened." << std::endl;
+		return;
+	}
+
 	curl_easy_setopt(curl, CURLOPT_URL, comData.GET_URL.c_str());
 	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, fwrite);
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
@@ -21,7 +27,12 @@ void Procon32::HTTPCommunication::POSTAnswer()
 	curl = curl_easy_init();
 
 	//一回テキストファイルの中身をstringに代入
-	std::ifstream ifs("Data/answer4.txt");
+	std::ifstream ifs("Data/answer5.txt");
+	if (!ifs)
+	{
+		std::cerr << "The file could not be opened." << std::endl;
+		return;
+	}
 	std::string str, line;
 	while (getline(ifs, line)) {
 		str += line +"\r"+ "\n";

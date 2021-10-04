@@ -4,7 +4,12 @@
 void Procon32::AboutProblem::GETProblemInfo()
 {
 	std::ifstream ProblemFile;
-	ProblemFile.open("Data/bbb.ppm");
+	ProblemFile.open("Data/bb.ppm");
+	if (!ProblemFile)
+	{
+		std::cerr << "The file could not be opened." << std::endl;
+		return;
+	}
 	Procon32::GameData data;
 
 	for (int i = 0; i < 6; i++)
@@ -76,6 +81,11 @@ void Procon32::AboutProblem::WRITEProblemInfo()
 	std::string filename = "Data/ProblemInfo.txt";
 	std::ofstream writing_file;
 	writing_file.open(filename, std::ios::trunc);
+	if (!writing_file)
+	{
+		std::cerr << "The file could not be opened." << std::endl;
+		return;
+	}
 
 	Procon32::GameData data;
 

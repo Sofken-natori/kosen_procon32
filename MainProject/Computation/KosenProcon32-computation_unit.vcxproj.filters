@@ -38,9 +38,6 @@
     <ClInclude Include="AboutProblem.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="CommunicationData.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GameData.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>

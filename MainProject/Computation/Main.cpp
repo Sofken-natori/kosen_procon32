@@ -6,8 +6,8 @@
 int main()
 {
 
-    Procon32::HTTPCommunication http;
-    http.GETProblem();
+    //Procon32::HTTPCommunication http;
+    //http.GETProblem();
 
     Procon32::AboutProblem pp;
     pp.GETProblemInfo();
