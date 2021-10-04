@@ -33,6 +33,9 @@ void Procon32::GameData::SetProblemInfo(std::string s1,std::string s2,int num)
 
 		MaxRGBChannel = stoi(s1);
 		break;
+
+	default:
+		break;
 	}
 }
 
@@ -70,6 +73,9 @@ std::string Procon32::GameData::GetProblemInfo(int num)
 	case 5:
 		C = std::to_string(MaxRGBChannel);
 		return C;
+		break;
+
+	default:
 		break;
 	}
 }

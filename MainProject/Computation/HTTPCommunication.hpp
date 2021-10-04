@@ -14,9 +14,6 @@ namespace Procon32 {
 		FILE* fp;
 		CURLcode res;
 
-		const char* GET_URL;
-		const char* POST_URL;
-
 		struct curl_slist* postList = NULL;
 
 		
