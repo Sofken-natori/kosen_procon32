@@ -4,7 +4,7 @@
 void Procon32::AboutProblem::GETProblemInfo()
 {
 	std::ifstream ProblemFile;
-	ProblemFile.open("bbb.ppm");
+	ProblemFile.open("Data/bbb.ppm");
 	Procon32::GameData data;
 
 	for (int i = 0; i < 6; i++)
@@ -67,13 +67,13 @@ void Procon32::AboutProblem::GETProblemInfo()
 
 	ProblemFile.close();
 
-	data.ShowAll();
+	//data.ShowAll();
 }
 
 //GUI“Ç‚ÝŽæ‚è—p‚É‰æ‘œî•ñ‚Ì.txt‚Ö‚Ì‘‚«ž‚Ý
 void Procon32::AboutProblem::WRITEProblemInfo()
 {
-	std::string filename = "ProblemInfo.txt";
+	std::string filename = "Data/ProblemInfo.txt";
 	std::ofstream writing_file;
 	writing_file.open(filename, std::ios::trunc);
 

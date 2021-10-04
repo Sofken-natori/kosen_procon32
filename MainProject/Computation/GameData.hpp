@@ -3,13 +3,19 @@
 
 namespace Procon32
 {
+	struct CommunicationData
+	{
+		std::string ProblemImagePath;
+		std::string RestoreImagePath;
+		std::string AfterImagePath;
+		std::string GET_URL;
+		std::string POST_URL;
+		std::string Token;
+	};
+
 	class GameData
 	{
 	private:
-
-		static std::string ProblemImagePath;
-		static std::string RestoreImagePath;
-		static std::string AfterImagePath;
 
 		static std::string MagicNumber;
 		static int Width;

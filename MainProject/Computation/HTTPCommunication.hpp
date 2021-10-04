@@ -1,12 +1,14 @@
 #pragma once
 #include"KosenProcon32.hpp"
-#include<string>
+#include"GameData.hpp"
 
 namespace Procon32 {
 
 	class HTTPCommunication
 	{
 	private:
+
+		CommunicationData comData;
 
 		CURL* curl;
 		FILE* fp;
