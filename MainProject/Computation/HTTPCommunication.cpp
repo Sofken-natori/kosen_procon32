@@ -27,7 +27,7 @@ void Procon32::HTTPCommunication::POSTAnswer()
 		str += line +"\r"+ "\n";
 	}
 
-	std::cout << str << std::endl;
+	//std::cout << str << std::endl;
 
 	curl_easy_setopt(curl, CURLOPT_URL, POST_URL);
 	curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1L);
@@ -44,7 +44,7 @@ Procon32::HTTPCommunication::HTTPCommunication()
 {	
 
 	postList = NULL;
-	postList = curl_slist_append(postList, "procon-token: 35f789ce0a22fb3d5b9fbab079f41aaddceffca3ab6e6062b5850b08a9804bac");
+	postList = curl_slist_append(postList, "procon-token: ");
 	postList = curl_slist_append(postList, "Content - Type: application/txt");
 
 	
