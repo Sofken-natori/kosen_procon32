@@ -6,6 +6,6 @@
 * OpenSiv3D(v0.6.1)
 * OpenCV(v4.1.1)
 * libcurl
-
+* picojson
 
 
