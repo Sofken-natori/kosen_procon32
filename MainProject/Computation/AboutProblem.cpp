@@ -1,10 +1,9 @@
 #include"AboutProblem.hpp"
-#include"GameData.hpp"
 
 void Procon32::AboutProblem::GETProblemInfo()
 {
 	std::ifstream ProblemFile;
-	ProblemFile.open("Data/bb.ppm");
+	ProblemFile.open(comData.ProblemImagePath);
 	if (!ProblemFile)
 	{
 		std::cerr << "The file could not be opened." << std::endl;
@@ -78,9 +77,8 @@ void Procon32::AboutProblem::GETProblemInfo()
 //GUI読み取り用に画像情報の.txtへの書き込み
 void Procon32::AboutProblem::WRITEProblemInfo()
 {
-	std::string filename = "Data/ProblemInfo.txt";
 	std::ofstream writing_file;
-	writing_file.open(filename, std::ios::trunc);
+	writing_file.open(comData.ProblemInfoPath, std::ios::trunc);
 	if (!writing_file)
 	{
 		std::cerr << "The file could not be opened." << std::endl;
@@ -123,8 +121,24 @@ void Procon32::AboutProblem::WRITEProblemInfo()
 }
 
 Procon32::AboutProblem::AboutProblem()
-{
+{	// JSONデータの読み込み。
+	std::ifstream ifs("Data/GameData.json", std::ios::in);
+	if (ifs.fail()) {
+		std::cerr << "failed to read GameData.json" << std::endl;
+	}
+	const std::string json((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
+	ifs.close();
 
+	// JSONデータを解析する。
+	picojson::value v;
+	const std::string err = picojson::parse(v, json);
+	if (err.empty() == false) {
+		std::cerr << err << std::endl;
+	}
+
+	picojson::object& obj = v.get<picojson::object>();
+	comData.ProblemImagePath = obj["ProblemImagePath"].get<std::string>();
+	comData.ProblemInfoPath = obj["ProblemInfoPath"].get<std::string>();
 }
 
 Procon32::AboutProblem::~AboutProblem()

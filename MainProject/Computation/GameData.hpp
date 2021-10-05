@@ -8,6 +8,7 @@ namespace Procon32
 		std::string ProblemImagePath;
 		std::string RestoreImagePath;
 		std::string AfterImagePath;
+		std::string ProblemInfoPath;
 		std::string GET_URL;
 		std::string POST_URL;
 		std::string Token;

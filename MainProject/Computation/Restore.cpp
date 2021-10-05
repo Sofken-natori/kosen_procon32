@@ -2,7 +2,7 @@
 
 void Procon32::Restore::RestoreImage()
 {
-
+	
 }
 
 Procon32::Restore::Restore()

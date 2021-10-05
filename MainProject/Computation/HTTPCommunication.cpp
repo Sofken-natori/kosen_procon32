@@ -56,7 +56,7 @@ Procon32::HTTPCommunication::HTTPCommunication()
 	// JSONデータの読み込み。
 	std::ifstream ifs("Data/GameData.json", std::ios::in);
 	if (ifs.fail()) {
-		std::cerr << "failed to read test.json" << std::endl;
+		std::cerr << "failed to read GameData.json" << std::endl;
 	}
 	const std::string json((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
 	ifs.close();
