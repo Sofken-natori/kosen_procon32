@@ -19,8 +19,6 @@ namespace Procon32
 	{
 	public:
 
-		//void SetProblemInfo(std::string S1,std::string S2,int num);
-		//std::string GetProblemInfo(int num);
 		void ShowAll();
 
 		static std::string MagicNumber;
