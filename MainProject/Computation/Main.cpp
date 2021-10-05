@@ -1,7 +1,7 @@
 #include"KosenProcon32.hpp"
 #include"HTTPCommunication.hpp"
 #include"AboutProblem.hpp"
-
+#include"Restore.hpp"
 
 int main()
 {
@@ -14,6 +14,9 @@ int main()
     pp.WRITEProblemInfo();
 
    // http.POSTAnswer();
+    
+    Procon32::Restore restore;
+    restore.RestoreImage();
 
     std::cout << "System end" << std::endl;
 

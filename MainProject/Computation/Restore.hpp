@@ -1,4 +1,5 @@
 #include"KosenProcon32.hpp"
+#include"GameData.hpp"
 
 namespace Procon32
 {
@@ -6,9 +7,13 @@ namespace Procon32
 	{
 	private:
 
+		CommunicationData comData;
+
 	public:
 
 		void RestoreImage();
+
+		void ConversionImage(cv::Mat);
 
 		Restore();
 		~Restore();

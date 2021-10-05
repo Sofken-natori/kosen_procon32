@@ -6,6 +6,7 @@ namespace Procon32
 	struct CommunicationData
 	{
 		std::string ProblemImagePath;
+		std::string ProblemImageGUI;
 		std::string RestoreImagePath;
 		std::string AfterImagePath;
 		std::string ProblemInfoPath;

@@ -1,5 +1,6 @@
 {
   "ProblemImagePath": "Data/bbb.ppm",
+  "ProblemImage-GUI": "Data/ProblemImage-GUI.jpg",
   "RestoreImagePath": " ",
   "AfterImagePath": " ",
   "ProblemInfoPath": "Data/ProblemInfo.txt",
