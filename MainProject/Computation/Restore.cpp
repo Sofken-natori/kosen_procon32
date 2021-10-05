@@ -10,6 +10,16 @@ void Procon32::Restore::RestoreImage()
 
 	ConversionImage(image);
 
+	//グレイスケール化
+	cv::Mat grayimage;
+	cv::cvtColor(image, grayimage, cv::COLOR_RGB2GRAY);
+	
+	//cv::imshow("gray", grayimage);
+	//cv::waitKey(0);
+
+	//std::vector<cv::Mat> V1;
+	//std::vector<std::vector<cv::Mat>>V2()
+
 	return;
 }
 

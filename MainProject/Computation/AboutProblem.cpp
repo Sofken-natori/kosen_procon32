@@ -9,6 +9,7 @@ void Procon32::AboutProblem::GETProblemInfo()
 		std::cerr << "The file could not be opened." << std::endl;
 		return;
 	}
+
 	Procon32::GameData data;
 
 	for (int i = 0; i < 6; i++)
@@ -21,7 +22,7 @@ void Procon32::AboutProblem::GETProblemInfo()
 		{
 		case 0:
 			//MagicNumber
-			data.SetProblemInfo(line, "None", i);
+			data.MagicNumber = line;
 			break;
 		case 1:
 			//Width,Height
@@ -31,15 +32,14 @@ void Procon32::AboutProblem::GETProblemInfo()
 			for (int j = 0; j < findSpace; j++)first += line[j];
 			for (int j = findSpace; j < line.size(); j++)second += line[j];
 
-			data.SetProblemInfo(first, second, i);
-
+			data.Width = stoi(first);
+			data.Height = stoi(second);
 			break;
 		case 2:
 			//SelectableTimes
 
 			line.erase(0, 2);
-			data.SetProblemInfo(line, "None", i);
-
+			data.SelectableTimes = stoi(line);
 			break;
 		case 3:
 			//SelectiveRate ExchangeRate
@@ -49,7 +49,8 @@ void Procon32::AboutProblem::GETProblemInfo()
 			for (int j = 0; j < findSpace; j++)first += line[j];
 			for (int j = findSpace; j < line.size(); j++)second += line[j];
 
-			data.SetProblemInfo(first, second, i);
+			data.SelectiveRate = stoi(first);
+			data.ExchangeRate = stoi(second);
 
 			break;
 		case 4:
@@ -59,12 +60,14 @@ void Procon32::AboutProblem::GETProblemInfo()
 			for (int j = 0; j < findSpace; j++)first += line[j];
 			for (int j = findSpace; j < line.size(); j++)second += line[j];
 
-			data.SetProblemInfo(first, second, i);
-
+			data.PixelWidth = stoi(first);
+			data.PixelHeight = stoi(second);
 			break;
 		case 5:
 			//MaxRGBChannel
-			data.SetProblemInfo(line, "None", i);
+			data.MaxRGBChannel = stoi(line);
+			break;
+		default:
 			break;
 		}
 	}
@@ -86,33 +89,47 @@ void Procon32::AboutProblem::WRITEProblemInfo()
 	}
 
 	Procon32::GameData data;
+	std::string A, B, C;
 
 	for (int i = 0; i < 6; i++)
 	{
 		switch (i)
 		{
 		case 0:
-			writing_file << data.GetProblemInfo(i);
+			writing_file << data.MagicNumber;
 			writing_file << std::endl;
 			break;
 		case 1:
-			writing_file << data.GetProblemInfo(i);
+			A = std::to_string(data.Width);
+			B = std::to_string(data.Height);
+			C = A + " " + B;
+			writing_file << C;
 			writing_file << std::endl;
 			break;
 		case 2:
-			writing_file << data.GetProblemInfo(i);
+			C = std::to_string(data.SelectableTimes);
+			writing_file << C;
 			writing_file << std::endl;
 			break;
 		case 3:
-			writing_file << data.GetProblemInfo(i);
+			A = std::to_string(data.SelectiveRate);
+			B = std::to_string(data.ExchangeRate);
+			C = A + " " + B;
+			writing_file << C;
 			writing_file << std::endl;
 			break;
 		case 4:
-			writing_file << data.GetProblemInfo(i);
+			A = std::to_string(data.PixelWidth);
+			B = std::to_string(data.PixelHeight);
+			C = A + " " + B;
+			writing_file << C;
 			writing_file << std::endl;
 			break;
 		case 5:
-			writing_file << data.GetProblemInfo(i);
+			C = std::to_string(data.MaxRGBChannel);
+			writing_file << C;
+			break;
+		default:
 			break;
 		}
 	}
