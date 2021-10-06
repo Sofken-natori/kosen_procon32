@@ -1,17 +1,20 @@
 ## Computation
 ### 宣言
 Algorithm.hpp(アルゴリズム)  
-CommunicationData.hpp(通信部データ構造体)  
+AboutProblem.hpp(画像情報取得)  
+GameData.hpp(データ構造体)  
 HTTPCommunication.hpp(通信部)  
 KosenProcon32.hpp(定数など)  
 Restore.hpp(画像復元)  
-CheckScore.hpp(スコア比較)    
+Score.hpp(スコア計算・比較)    
 
 ### 定義
 Algorithm.cpp  
+AboutProblem.cpp  
+GameData.cpp
 HTTPCommunication.cpp  
 Restore.cpp  
-CheckScore.cpp  
+Score.cpp  
 
 ### 実装
 Main.cpp  
