@@ -2,6 +2,7 @@
 #include<iostream>
 #include<string>
 #include<algorithm>
+#include<vector>
 #include<cstdio>
 #include<fstream>
 #include<opencv2/opencv.hpp>

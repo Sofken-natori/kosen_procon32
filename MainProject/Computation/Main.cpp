@@ -16,13 +16,13 @@ int main()
 
    // http.POSTAnswer();
     
-    //Procon32::Restore restore;
-    //restore.RestoreImage();
+    Procon32::Restore restore;
+    restore.RestoreImage();
 
     Procon32::GameData game;
     game.ShowAll();
 
     std::cout << "System end" << std::endl;
-
+    
     return 0;
 }

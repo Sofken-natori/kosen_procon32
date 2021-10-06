@@ -14,20 +14,139 @@ void Procon32::Restore::RestoreImage()
 	cv::Mat grayimage;
 	cv::cvtColor(image, grayimage, cv::COLOR_RGB2GRAY);
 	
-	//cv::imshow("gray", grayimage);
-	//cv::waitKey(0);
+	std::vector<cv::Mat> Unfinished_piece;
 
-	//std::vector<cv::Mat> V1;
-	//std::vector<std::vector<cv::Mat>>V2()
+	//座標00の断片画像
+	cv::Mat piece_00;
+
+	//unfinishedpieceにpush 
+	//注意！　座標00の断片画像はpushされません！
+	for (int y = 0; y < data.Height; y++)
+	{
+		for (int x = 0; x < data.Width; x++)
+		{
+			if (y == 0 && x == 0)
+			{
+				piece_00 = grayimage(cv::Rect(x, y, piece_size, piece_size)).clone();
+			}
+			else
+			{
+				Unfinished_piece.push_back(grayimage(cv::Rect(x * piece_size, y * piece_size, piece_size, piece_size)).clone());
+			}
+		}
+	}
+
+	pix00_totalU = calculatioPixTotal(0, piece_size, grayimage);
+	pix00_totalR = calculatioPixTotal(1, piece_size, grayimage);
+	pix00_totalD = calculatioPixTotal(2, piece_size, grayimage);
+	pix00_totalL = calculatioPixTotal(3, piece_size, grayimage);
+
+
+	//00の右辺に結合するために計算
+	cv::Mat RestoreImage = piece_00.clone();
+	cv::Mat unpiece, result;
+	int MinTotal = 100000000;
+	for (int count = 0; count < Unfinished_piece.size(); count++)
+	{
+		unpiece = Unfinished_piece[count];
+
+		int Min = 1000000000, sum;
+
+		//unpieceの四辺の中で合計値の最小値を求める 00の右辺との絶対値計算
+		for (int rotate = 0; rotate < 4; rotate++)
+		{
+			sum = abs(pix00_totalR - calculatioPixTotal(rotate, piece_size, unpiece));
+			Min = min(Min, sum);
+			//std::cout << count << " " << Min << " " << calculatioPixTotal(rotate, piece_size, unpiece) << " " << sum << std::endl;
+		}
+		
+		if (Min < MinTotal)
+		{
+			MinTotal = Min;
+			result = unpiece;
+		}
+	}
+
+	//for (int i = 0; i < Unfinished_piece.size(); i++)
+	//{
+	//	cv::Mat a = Unfinished_piece[i];
+	//	std::cout << a.cols << " " << a.rows << std::endl;
+	//	cv::imshow("a", a);
+	//	cv::waitKey(0);
+	//}
+
+	cv::imshow("piece_00", piece_00);
+	cv::imshow("result", result);
+	cv::waitKey(0);
+
+	//std::cout << pixelTotal_U << std::endl;
+	//std::cout << pixelTotal_L << std::endl;
+	//std::cout << pixelTotal_D << std::endl;
+	//std::cout << pixelTotal_R << std::endl;
 
 	return;
 }
+
+int Procon32::Restore::calculatioPixTotal(int direction,int size, cv::Mat img)
+{
+	int Total = 0;
+	switch (direction)
+	{
+	case 0:
+		//U 上辺
+		for (int x = 0; x < size; x++)
+		{
+			Total += img.at<unsigned char>(0, x);
+		}
+
+		return Total;
+		break;
+	case 1:
+		//R 右辺
+		for (int y = 0; y < size; y++)
+		{
+			Total += img.at<unsigned char>(y, size - 1);
+		}
+
+		return Total;
+		break;
+	case 2:
+		//D 下辺
+		for (int x = 0; x < size; x++)
+		{
+			Total += img.at<unsigned char>(size - 1, x);
+		}
+
+		return Total;
+		break;
+	case 3:
+		//L 左辺
+		for (int y = 0; y < size; y++)
+		{
+			Total += img.at<unsigned char>(y, 0);
+		}
+
+		return Total;
+		break;
+	default:
+		break;
+	}
+}
+
+
+
+
 
 //GUI読み取り用に.ppm→.jpg変換　この関数は必要なのか?
 void Procon32::Restore::ConversionImage(cv::Mat img)
 {
 	cv::imwrite(comData.ProblemImageGUI, img);
 }
+
+
+
+
+
 
 Procon32::Restore::Restore()
 {
@@ -49,7 +168,12 @@ Procon32::Restore::Restore()
 	picojson::object& obj = v.get<picojson::object>();
 	comData.ProblemImagePath = obj["ProblemImagePath"].get<std::string>();
 	comData.ProblemImageGUI = obj["ProblemImage-GUI"].get<std::string>();
+
+	piece_size = data.PixelWidth / data.Width;
 }
+
+
+
 
 Procon32::Restore::~Restore()
 {
