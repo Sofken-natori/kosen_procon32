@@ -1,0 +1,12 @@
+#include <fstream>
+#include <string>
+
+int main(int argc, char* argv[]) {
+    std::ofstream writing_file;
+    std::string filename = "answer.txt";
+    writing_file.open(filename, std::ios::out);
+    std::string writing_text = "0000000000000000000000000\n1\n00\n1\nD";
+    writing_file << writing_text << std::endl;
+    writing_file.close();
+    return 0;
+}
