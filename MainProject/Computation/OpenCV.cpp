@@ -3,6 +3,9 @@
 #include <cstdlib>
 #include <cmath>
 #include <vector>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 using namespace cv;
 using namespace std;
@@ -42,11 +45,17 @@ vector<int> spin(256, 0);
 
 int spin_cheak = 0;
 
-int evalution_value = 5000;
+int evalution_value;
 
 int eva = 0;
 
 int result = 99999;
+
+int edge;
+
+int col_num, row_num;
+
+
 
 bool update = false;
 
@@ -57,11 +66,11 @@ int right(int i, int j) {
 	Mat image2 = imread("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[j] + ".png");
 
 	//上端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge+1; i++) {
 
-		eva += abs(image1.at<Vec3b>(i, 255)[0] - image2.at<Vec3b>(0, 255 - i)[0]);
-		eva += abs(image1.at<Vec3b>(i, 255)[1] - image2.at<Vec3b>(0, 255 - i)[1]);
-		eva += abs(image1.at<Vec3b>(i, 255)[2] - image2.at<Vec3b>(0, 255 - i)[2]);
+		eva += abs(image1.at<Vec3b>(i, edge)[0] - image2.at<Vec3b>(0, edge - i)[0]);
+		eva += abs(image1.at<Vec3b>(i, edge)[1] - image2.at<Vec3b>(0, edge - i)[1]);
+		eva += abs(image1.at<Vec3b>(i, edge)[2] - image2.at<Vec3b>(0, edge - i)[2]);
 
 	}
 
@@ -80,11 +89,11 @@ int right(int i, int j) {
 	eva = 0;
 
 	//下端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(i, 255)[0] - image2.at<Vec3b>(255, i)[0]);
-		eva += abs(image1.at<Vec3b>(i, 255)[1] - image2.at<Vec3b>(255, i)[1]);
-		eva += abs(image1.at<Vec3b>(i, 255)[2] - image2.at<Vec3b>(255, i)[2]);
+		eva += abs(image1.at<Vec3b>(i, edge)[0] - image2.at<Vec3b>(edge, i)[0]);
+		eva += abs(image1.at<Vec3b>(i, edge)[1] - image2.at<Vec3b>(edge, i)[1]);
+		eva += abs(image1.at<Vec3b>(i, edge)[2] - image2.at<Vec3b>(edge, i)[2]);
 
 	}
 
@@ -103,11 +112,11 @@ int right(int i, int j) {
 	eva = 0;
 
 	//左端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(i, 255)[0] - image2.at<Vec3b>(i, 0)[0]);
-		eva += abs(image1.at<Vec3b>(i, 255)[1] - image2.at<Vec3b>(i, 0)[1]);
-		eva += abs(image1.at<Vec3b>(i, 255)[2] - image2.at<Vec3b>(i, 0)[2]);
+		eva += abs(image1.at<Vec3b>(i, edge)[0] - image2.at<Vec3b>(i, 0)[0]);
+		eva += abs(image1.at<Vec3b>(i, edge)[1] - image2.at<Vec3b>(i, 0)[1]);
+		eva += abs(image1.at<Vec3b>(i, edge)[2] - image2.at<Vec3b>(i, 0)[2]);
 
 	}
 
@@ -128,11 +137,11 @@ int right(int i, int j) {
 	eva = 0;
 
 	//右端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(i, 255)[0] - image2.at<Vec3b>(255 - i, 255)[0]);
-		eva += abs(image1.at<Vec3b>(i, 255)[1] - image2.at<Vec3b>(255 - i, 255)[1]);
-		eva += abs(image1.at<Vec3b>(i, 255)[2] - image2.at<Vec3b>(255 - i, 255)[2]);
+		eva += abs(image1.at<Vec3b>(i, edge)[0] - image2.at<Vec3b>(edge - i, edge)[0]);
+		eva += abs(image1.at<Vec3b>(i, edge)[1] - image2.at<Vec3b>(edge - i, edge)[1]);
+		eva += abs(image1.at<Vec3b>(i, edge)[2] - image2.at<Vec3b>(edge - i, edge)[2]);
 
 	}
 
@@ -174,7 +183,7 @@ int left(int i, int j) {
 	Mat image2 = imread("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[j] + ".png");
 
 	//上端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
 		eva += abs(image1.at<Vec3b>(i, 0)[0] - image2.at<Vec3b>(0, i)[0]);
 		eva += abs(image1.at<Vec3b>(i, 0)[1] - image2.at<Vec3b>(0, i)[1]);
@@ -197,11 +206,11 @@ int left(int i, int j) {
 	eva = 0;
 
 	//下端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(i, 0)[0] - image2.at<Vec3b>(255, 255 - i)[0]);
-		eva += abs(image1.at<Vec3b>(i, 0)[1] - image2.at<Vec3b>(255, 255 - i)[1]);
-		eva += abs(image1.at<Vec3b>(i, 0)[2] - image2.at<Vec3b>(255, 255 - i)[2]);
+		eva += abs(image1.at<Vec3b>(i, 0)[0] - image2.at<Vec3b>(edge, edge - i)[0]);
+		eva += abs(image1.at<Vec3b>(i, 0)[1] - image2.at<Vec3b>(edge, edge - i)[1]);
+		eva += abs(image1.at<Vec3b>(i, 0)[2] - image2.at<Vec3b>(edge, edge - i)[2]);
 
 	}
 
@@ -221,11 +230,11 @@ int left(int i, int j) {
 	eva = 0;
 
 	//左端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(i, 0)[0] - image2.at<Vec3b>(255 - i, 0)[0]);
-		eva += abs(image1.at<Vec3b>(i, 0)[1] - image2.at<Vec3b>(255 - i, 0)[1]);
-		eva += abs(image1.at<Vec3b>(i, 0)[2] - image2.at<Vec3b>(255 - i, 0)[2]);
+		eva += abs(image1.at<Vec3b>(i, 0)[0] - image2.at<Vec3b>(edge - i, 0)[0]);
+		eva += abs(image1.at<Vec3b>(i, 0)[1] - image2.at<Vec3b>(edge - i, 0)[1]);
+		eva += abs(image1.at<Vec3b>(i, 0)[2] - image2.at<Vec3b>(edge - i, 0)[2]);
 
 	}
 
@@ -244,11 +253,11 @@ int left(int i, int j) {
 	eva = 0;
 
 	//右端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(i, 0)[0] - image2.at<Vec3b>(i, 255)[0]);
-		eva += abs(image1.at<Vec3b>(i, 0)[1] - image2.at<Vec3b>(i, 255)[1]);
-		eva += abs(image1.at<Vec3b>(i, 0)[2] - image2.at<Vec3b>(i, 255)[2]);
+		eva += abs(image1.at<Vec3b>(i, 0)[0] - image2.at<Vec3b>(i, edge)[0]);
+		eva += abs(image1.at<Vec3b>(i, 0)[1] - image2.at<Vec3b>(i, edge)[1]);
+		eva += abs(image1.at<Vec3b>(i, 0)[2] - image2.at<Vec3b>(i, edge)[2]);
 
 	}
 
@@ -291,11 +300,11 @@ int up(int i, int j) {
 
 
 	//上端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(0, i)[0] - image2.at<Vec3b>(0, 255 - i)[0]);
-		eva += abs(image1.at<Vec3b>(0, i)[1] - image2.at<Vec3b>(0, 255 - i)[1]);
-		eva += abs(image1.at<Vec3b>(0, i)[2] - image2.at<Vec3b>(0, 255 - i)[2]);
+		eva += abs(image1.at<Vec3b>(0, i)[0] - image2.at<Vec3b>(0, edge - i)[0]);
+		eva += abs(image1.at<Vec3b>(0, i)[1] - image2.at<Vec3b>(0, edge - i)[1]);
+		eva += abs(image1.at<Vec3b>(0, i)[2] - image2.at<Vec3b>(0, edge - i)[2]);
 
 	}
 
@@ -314,11 +323,11 @@ int up(int i, int j) {
 	eva = 0;
 
 	//下端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(0, i)[0] - image2.at<Vec3b>(255, i)[0]);
-		eva += abs(image1.at<Vec3b>(0, i)[1] - image2.at<Vec3b>(255, i)[1]);
-		eva += abs(image1.at<Vec3b>(0, i)[2] - image2.at<Vec3b>(255, i)[2]);
+		eva += abs(image1.at<Vec3b>(0, i)[0] - image2.at<Vec3b>(edge, i)[0]);
+		eva += abs(image1.at<Vec3b>(0, i)[1] - image2.at<Vec3b>(edge, i)[1]);
+		eva += abs(image1.at<Vec3b>(0, i)[2] - image2.at<Vec3b>(edge, i)[2]);
 
 	}
 
@@ -338,7 +347,7 @@ int up(int i, int j) {
 	eva = 0;
 
 	//左端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
 		eva += abs(image1.at<Vec3b>(0, i)[0] - image2.at<Vec3b>(i, 0)[0]);
 		eva += abs(image1.at<Vec3b>(0, i)[1] - image2.at<Vec3b>(i, 0)[1]);
@@ -361,11 +370,11 @@ int up(int i, int j) {
 	eva = 0;
 
 	//右端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(0, i)[0] - image2.at<Vec3b>(255 - i, 255)[0]);
-		eva += abs(image1.at<Vec3b>(0, i)[1] - image2.at<Vec3b>(255 - i, 255)[1]);
-		eva += abs(image1.at<Vec3b>(0, i)[2] - image2.at<Vec3b>(255 - i, 255)[2]);
+		eva += abs(image1.at<Vec3b>(0, i)[0] - image2.at<Vec3b>(edge - i, edge)[0]);
+		eva += abs(image1.at<Vec3b>(0, i)[1] - image2.at<Vec3b>(edge - i, edge)[1]);
+		eva += abs(image1.at<Vec3b>(0, i)[2] - image2.at<Vec3b>(edge - i, edge)[2]);
 
 	}
 
@@ -408,11 +417,11 @@ int down(int i, int j) {
 
 
 	//上端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(255, i)[0] - image2.at<Vec3b>(0, i)[0]);
-		eva += abs(image1.at<Vec3b>(255, i)[1] - image2.at<Vec3b>(0, i)[1]);
-		eva += abs(image1.at<Vec3b>(255, i)[2] - image2.at<Vec3b>(0, i)[2]);
+		eva += abs(image1.at<Vec3b>(edge, i)[0] - image2.at<Vec3b>(0, i)[0]);
+		eva += abs(image1.at<Vec3b>(edge, i)[1] - image2.at<Vec3b>(0, i)[1]);
+		eva += abs(image1.at<Vec3b>(edge, i)[2] - image2.at<Vec3b>(0, i)[2]);
 
 	}
 
@@ -431,11 +440,11 @@ int down(int i, int j) {
 	eva = 0;
 
 	//下端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(255, i)[0] - image2.at<Vec3b>(255, 255 - i)[0]);
-		eva += abs(image1.at<Vec3b>(255, i)[1] - image2.at<Vec3b>(255, 255 - i)[1]);
-		eva += abs(image1.at<Vec3b>(255, i)[2] - image2.at<Vec3b>(255, 255 - i)[2]);
+		eva += abs(image1.at<Vec3b>(edge, i)[0] - image2.at<Vec3b>(edge, edge - i)[0]);
+		eva += abs(image1.at<Vec3b>(edge, i)[1] - image2.at<Vec3b>(edge, edge - i)[1]);
+		eva += abs(image1.at<Vec3b>(edge, i)[2] - image2.at<Vec3b>(edge, edge - i)[2]);
 
 	}
 
@@ -455,11 +464,11 @@ int down(int i, int j) {
 	eva = 0;
 
 	//左端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(255, i)[0] - image2.at<Vec3b>(255 - i, 0)[0]);
-		eva += abs(image1.at<Vec3b>(255, i)[1] - image2.at<Vec3b>(255 - i, 0)[1]);
-		eva += abs(image1.at<Vec3b>(255, i)[2] - image2.at<Vec3b>(255 - i, 0)[2]);
+		eva += abs(image1.at<Vec3b>(edge, i)[0] - image2.at<Vec3b>(edge - i, 0)[0]);
+		eva += abs(image1.at<Vec3b>(edge, i)[1] - image2.at<Vec3b>(edge - i, 0)[1]);
+		eva += abs(image1.at<Vec3b>(edge, i)[2] - image2.at<Vec3b>(edge - i, 0)[2]);
 
 	}
 
@@ -478,11 +487,11 @@ int down(int i, int j) {
 	eva = 0;
 
 	//右端
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < edge + 1; i++) {
 
-		eva += abs(image1.at<Vec3b>(255, i)[0] - image2.at<Vec3b>(i, 255)[0]);
-		eva += abs(image1.at<Vec3b>(255, i)[1] - image2.at<Vec3b>(i, 255)[1]);
-		eva += abs(image1.at<Vec3b>(255, i)[2] - image2.at<Vec3b>(i, 255)[2]);
+		eva += abs(image1.at<Vec3b>(edge, i)[0] - image2.at<Vec3b>(i, edge)[0]);
+		eva += abs(image1.at<Vec3b>(edge, i)[1] - image2.at<Vec3b>(i, edge)[1]);
+		eva += abs(image1.at<Vec3b>(edge, i)[2] - image2.at<Vec3b>(i, edge)[2]);
 
 	}
 
@@ -523,16 +532,19 @@ int down(int i, int j) {
 
 int main(int argc, char* argv[]) {
 
-	int col_num = 5;
-	int row_num = 5;
+	
 	int r_count = 0;
 	int u_count = 0;
 	int image_up = 0;
 	int image_up_copy = 0;
 	int image_down = 0;
 	int image_down_copy = 0;
+	int back = 0;
 	bool end = false;
 	answer.push_back(0);
+	
+	cout << "1行目:横の分割数  " << "2行目:縦の分割数  " << "3行目:評価値" << endl;
+	cin >> col_num >> row_num >> evalution_value;
 
 	Mat image_pro = imread("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem.ppm");	// 分割する画像の取得
 
@@ -543,7 +555,7 @@ int main(int argc, char* argv[]) {
 
 	int width = image_pro.cols;	// 入力画像の横の長さ
 	int height = image_pro.rows;	// 入力画像の縦の長さ
-	std::cout << "Width = " << width << " / Height = " << height << std::endl;
+	
 
 	int s_width = width % col_num;						// 横方向の余り
 	int* div_width = new int[col_num];		// 分割後画像の横の長さを入れる配列
@@ -598,7 +610,10 @@ int main(int argc, char* argv[]) {
 
 	}
 
+	
+	edge = (width / col_num) - 1;
 
+	
 
     //座標00の右側
 	int image1_num = 0;
@@ -607,7 +622,7 @@ int main(int argc, char* argv[]) {
 	for (int r = 0; r < col_num - 1; r++) {
 
 
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < col_num*row_num; i++) {
 
 			if (image1_num != i) {
 				int s = right(image1_num, i);
@@ -650,23 +665,23 @@ int main(int argc, char* argv[]) {
 		case 1:
 			rotate(image_spin, image_spin, ROTATE_90_CLOCKWISE);
 			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 			break;
 		case 2:
 			rotate(image_spin, image_spin, ROTATE_180);
 			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 
 			break;
 
 		case 3:
 			rotate(image_spin, image_spin, ROTATE_90_COUNTERCLOCKWISE);
 			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 			break;
 
 		default:
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 
 			break;
 		}
@@ -690,7 +705,7 @@ int main(int argc, char* argv[]) {
 
 	for (int l = 0; l < (col_num - r_count - 1); l++) {
 
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < col_num*row_num; i++) {
 
 			if (image1_num != i) {
 				int s = left(image1_num, i);
@@ -752,7 +767,7 @@ int main(int argc, char* argv[]) {
 	for (int u = 0; u < row_num - 1; u++) {
 
 
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < col_num*row_num; i++) {
 
 			if (image1_num != i) {
 				int s = up(image1_num, i);
@@ -796,23 +811,23 @@ int main(int argc, char* argv[]) {
 		case 1:
 			rotate(image_spin, image_spin, ROTATE_90_CLOCKWISE);
 			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 			break;
 		case 2:
 			rotate(image_spin, image_spin, ROTATE_180);
 			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 
 			break;
 
 		case 3:
 			rotate(image_spin, image_spin, ROTATE_90_COUNTERCLOCKWISE);
 			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 			break;
 
 		default:
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 
 			break;
 		}
@@ -830,7 +845,7 @@ int main(int argc, char* argv[]) {
 		for (int r = 0; r < r_count; r++) {
 
 
-			for (int i = 0; i < 25; i++) {
+			for (int i = 0; i < col_num*row_num; i++) {
 
 				if (image1_num != i) {
 					int s = right(image1_num, i);
@@ -854,12 +869,13 @@ int main(int argc, char* argv[]) {
 
 			}
 
+			back++;
 
 			image1_num = judge;
 
 			result = 99999;
 
-			answer.insert(answer.begin() + 1, image1_num);
+			answer.insert(answer.begin() + back, image1_num);
 
 			spin[image1_num] = spin_cheak;
 
@@ -872,23 +888,23 @@ int main(int argc, char* argv[]) {
 			case 1:
 				rotate(image_spin, image_spin, ROTATE_90_CLOCKWISE);
 				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+				
 				break;
 			case 2:
 				rotate(image_spin, image_spin, ROTATE_180);
 				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+				
 
 				break;
 
 			case 3:
 				rotate(image_spin, image_spin, ROTATE_90_COUNTERCLOCKWISE);
 				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+				
 				break;
 
 			default:
-				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+				
 
 				break;
 			}
@@ -906,7 +922,7 @@ int main(int argc, char* argv[]) {
 
 		for (int l = 0; l < (col_num - r_count - 1); l++) {
 
-			for (int i = 0; i < 25; i++) {
+			for (int i = 0; i < col_num*row_num; i++) {
 
 				if (image_up != i) {
 					int s = left(image_up, i);
@@ -966,7 +982,7 @@ int main(int argc, char* argv[]) {
 
 		image1_num = image_up_copy;
 		
-
+		back = 0;
 
 	}
 
@@ -986,7 +1002,7 @@ int main(int argc, char* argv[]) {
 
 		
 
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < col_num*row_num; i++) {
 
 			if (image1_num != i) {
 				int s = down(image1_num, i);
@@ -1006,7 +1022,7 @@ int main(int argc, char* argv[]) {
 
 		image_down = image1_num;
 
-		image_down_copy = image1_num;
+		image_down_copy = image_down;
 
 		result = 99999;
 
@@ -1029,18 +1045,18 @@ int main(int argc, char* argv[]) {
 		case 2:
 			rotate(image_spin, image_spin, ROTATE_180);
 			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 
 			break;
 
 		case 3:
 			rotate(image_spin, image_spin, ROTATE_90_COUNTERCLOCKWISE);
 			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 			break;
 
 		default:
-			imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+			
 
 			break;
 		}
@@ -1056,7 +1072,7 @@ int main(int argc, char* argv[]) {
 		for (int r = 0; r < r_count; r++) {
 
 
-			for (int i = 0; i < 25; i++) {
+			for (int i = 0; i < col_num*row_num; i++) {
 
 				if (image1_num != i) {
 					int s = right(image1_num, i);
@@ -1090,23 +1106,23 @@ int main(int argc, char* argv[]) {
 			case 1:
 				rotate(image_spin, image_spin, ROTATE_90_CLOCKWISE);
 				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+				
 				break;
 			case 2:
 				rotate(image_spin, image_spin, ROTATE_180);
 				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+				
 
 				break;
 
 			case 3:
 				rotate(image_spin, image_spin, ROTATE_90_COUNTERCLOCKWISE);
 				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[image1_num] + ".png", image_spin);
-				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+				
 				break;
 
 			default:
-				imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/output_" + files[image1_num] + ".png", image_spin);
+				
 
 				break;
 			}
@@ -1124,7 +1140,7 @@ int main(int argc, char* argv[]) {
 
 		for (int l = 0; l < (col_num - r_count - 1); l++) {
 
-			for (int i = 0; i < 25; i++) {
+			for (int i = 0; i < col_num*row_num; i++) {
 
 				if (image_down != i) {
 					int s = left(image_down, i);
@@ -1141,11 +1157,12 @@ int main(int argc, char* argv[]) {
 			}
 
 
+			back++;
 
 			result = 99999;
 			image1_num = judge;
-			answer.insert(answer.end() - (r_count + 1) , image1_num);
-
+			answer.insert(answer.end() - (r_count + back ) , image1_num);
+			
 
 			spin[image1_num] = spin_cheak;
 
@@ -1182,6 +1199,7 @@ int main(int argc, char* argv[]) {
 
 		}
 
+		back = 0;
 
 		image1_num = image_down_copy;
 
@@ -1193,10 +1211,29 @@ int main(int argc, char* argv[]) {
 
 
 
-
-
-	for (int i = 0; i < 25; i++) {
+	for (int i = 0; i < col_num*row_num; i++) {
 		cout <<"断片画像" << i <<"  " << answer[i] << ',' << spin[answer[i]] << endl;
+	
+	}
+
+	int a = 0;
+	const int img_num = 16;
+	Mat smc_img[img_num];
+	Mat src_img[img_num];
+	Mat dst_img_h;
+	Mat dst_img_v;
+
+	for (int k = 0; k < row_num; k++) {
+		for (int i = 0; i < col_num; i++) {
+			src_img[i] = imread("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/problem/output_" + files[answer[i+a] ] + ".png", 1);
+
+			if (src_img[i].empty()) return -1;
+		}
+
+		hconcat(src_img, col_num, dst_img_h);
+		imwrite("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/answer_" + files[k] + ".png", dst_img_h);
+
+		a += col_num;
 
 	}
 
@@ -1204,7 +1241,20 @@ int main(int argc, char* argv[]) {
 
 
 
+		for (int i = 0; i < row_num; i++) {
+			smc_img[i] = imread("C:/Users/Hinoa/source/repos/OpenCV/OpenCV/line/answer_" + files[i] + ".png" , 1);
 
+			if (smc_img[i].empty()) return -1;
+		}
+
+		vconcat(smc_img, row_num, dst_img_v);
+	
+
+		resize(dst_img_v, dst_img_v, cv::Size(), 0.5, 0.5);
+	
+	imshow("Vconcat Image", dst_img_v);
+
+	waitKey(0);
 	return 0;
 
 
