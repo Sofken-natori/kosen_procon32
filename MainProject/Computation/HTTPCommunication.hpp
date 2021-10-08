@@ -9,6 +9,7 @@ namespace Procon32 {
 	private:
 
 		CommunicationData comData;
+		GameData data;
 
 		CURL* curl;
 		FILE* fp;

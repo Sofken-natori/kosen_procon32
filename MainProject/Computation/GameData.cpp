@@ -31,3 +31,5 @@ int Procon32::GameData::ExchangeRate;
 int Procon32::GameData::PixelWidth;
 int Procon32::GameData::PixelHeight;
 int Procon32::GameData::MaxRGBChannel;
+
+int Procon32::GameData::POSTnum;

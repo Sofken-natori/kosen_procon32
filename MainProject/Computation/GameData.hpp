@@ -31,6 +31,8 @@ namespace Procon32
 		static int PixelHeight;
 		static int MaxRGBChannel;
 
+		static int POSTnum;
+
 		GameData();
 		~GameData();
 	};
