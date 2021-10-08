@@ -2,134 +2,40 @@
 
 void Procon32::Restore::RestoreImage()
 {
-	//問題画像の読み取り
-	cv::Mat image = cv::imread(comData.ProblemImagePath);
-	if (image.empty())
+	while (S != "END")
 	{
-		std::cerr << "ProblemImage could not be opened." << std::endl;
-	}
+		std::cin >> S;
 
-	ConversionImage(image);
-
-	//グレイスケール化
-	cv::Mat grayimage;
-	cv::cvtColor(image, grayimage, cv::COLOR_RGB2GRAY);
-	
-	std::vector<cv::Mat> Unfinished_piece;
-
-	//座標00の断片画像
-	cv::Mat piece_00;
-
-	//unfinishedpieceにpush 
-	//注意！　座標00の断片画像はpushされません！
-	for (int y = 0; y < data.Height; y++)
-	{
-		for (int x = 0; x < data.Width; x++)
+		if (S == "SWAP")
 		{
-			if (y == 0 && x == 0)
-			{
-				piece_00 = grayimage(cv::Rect(x, y, piece_size, piece_size)).clone();
-			}
-			else
-			{
-				Unfinished_piece.push_back(grayimage(cv::Rect(x * piece_size, y * piece_size, piece_size, piece_size)).clone());
-			}
-		}
-	}
 
-	pix00_totalU = calculatioPixTotal(0, piece_size, grayimage);
-	pix00_totalR = calculatioPixTotal(1, piece_size, grayimage);
-	pix00_totalD = calculatioPixTotal(2, piece_size, grayimage);
-	pix00_totalL = calculatioPixTotal(3, piece_size, grayimage);
-
-
-
-
-	cv::Mat RestoreImage = piece_00.clone();
-	cv::Mat unpiece, result;
-	int MinTotal = 100000000, count = 0;
-	while (true)
-	{
-		for (int i = count; i < Unfinished_piece.size(); i++)
-		{
-			std::cout << i << " " << count << std::endl;
-			unpiece = Unfinished_piece[i];
-
-			int Min = 1000000000, sum;
-
-			//unpieceの四辺の中で合計値の最小値を求める 00の右辺との絶対値計算
-			for (int rotate = 0; rotate < 4; rotate++)
-			{
-				sum = abs(pix00_totalR - calculatioPixTotal(rotate, piece_size, unpiece));
-				Min = min(Min, sum);
-				std::cout << "count " << count << " sum " << sum << " calculation " << calculatioPixTotal(rotate, piece_size, unpiece) << " Min " << Min << std::endl;
-			}
-			
-			if (Min < MinTotal)
-			{
-				MinTotal = Min;
-				result = unpiece;
-			}
 		}
 
-		count++;
+		if (S == "ROTATION")
+		{
+
+		}
+
+		if (S == "RANDOM_SWAP")
+		{
+
+		}
+
+		if (S == "RANDOM_ROTATION")
+		{
+
+		}
+
+		if (S == "RANDOM_ALL")
+		{
+
+		}
+
+		if (S == "END")break;
 	}
-
-
-	cv::hconcat(RestoreImage, result, RestoreImage);
-	cv::imshow("Restore", RestoreImage);
-	cv::waitKey(0);
-
 
 	return;
 }
-
-int Procon32::Restore::calculatioPixTotal(int direction,int size, cv::Mat img)
-{
-	int Total = 0;
-	switch (direction)
-	{
-	case 0:
-		//U 上辺
-		for (int x = 0; x < size; x++)
-		{
-			Total += img.at<unsigned char>(0, x);
-		}
-
-		return Total;
-		break;
-	case 1:
-		//R 右辺
-		for (int y = 0; y < size; y++)
-		{
-			Total += img.at<unsigned char>(y, size - 1);
-		}
-
-		return Total;
-		break;
-	case 2:
-		//D 下辺
-		for (int x = 0; x < size; x++)
-		{
-			Total += img.at<unsigned char>(size - 1, x);
-		}
-
-		return Total;
-		break;
-	case 3:
-		//L 左辺
-		for (int y = 0; y < size; y++)
-		{
-			Total += img.at<unsigned char>(y, 0);
-		}
-
-		return Total;
-		break;
-	default:
-		break;
-	}
-}
-
 
 
 
