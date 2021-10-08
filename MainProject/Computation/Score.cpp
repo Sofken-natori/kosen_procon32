@@ -2,12 +2,12 @@
 
 int Procon32::Score::calculationScore()
 {
-	return;
+	return 0;
 }
 
 int Procon32::Score::compareScore()
 {
-	return;
+	return 0;
 }
 
 Procon32::Score::Score()

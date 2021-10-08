@@ -2,6 +2,7 @@
 
 void Procon32::Restore::RestoreImage()
 {
+	//問題画像の読み取り
 	cv::Mat image = cv::imread(comData.ProblemImagePath);
 	if (image.empty())
 	{
@@ -42,47 +43,43 @@ void Procon32::Restore::RestoreImage()
 	pix00_totalL = calculatioPixTotal(3, piece_size, grayimage);
 
 
-	//00の右辺に結合するために計算
+
+
 	cv::Mat RestoreImage = piece_00.clone();
 	cv::Mat unpiece, result;
-	int MinTotal = 100000000;
-	for (int count = 0; count < Unfinished_piece.size(); count++)
+	int MinTotal = 100000000, count = 0;
+	while (true)
 	{
-		unpiece = Unfinished_piece[count];
-
-		int Min = 1000000000, sum;
-
-		//unpieceの四辺の中で合計値の最小値を求める 00の右辺との絶対値計算
-		for (int rotate = 0; rotate < 4; rotate++)
+		for (int i = count; i < Unfinished_piece.size(); i++)
 		{
-			sum = abs(pix00_totalR - calculatioPixTotal(rotate, piece_size, unpiece));
-			Min = min(Min, sum);
-			//std::cout << count << " " << Min << " " << calculatioPixTotal(rotate, piece_size, unpiece) << " " << sum << std::endl;
+			std::cout << i << " " << count << std::endl;
+			unpiece = Unfinished_piece[i];
+
+			int Min = 1000000000, sum;
+
+			//unpieceの四辺の中で合計値の最小値を求める 00の右辺との絶対値計算
+			for (int rotate = 0; rotate < 4; rotate++)
+			{
+				sum = abs(pix00_totalR - calculatioPixTotal(rotate, piece_size, unpiece));
+				Min = min(Min, sum);
+				std::cout << "count " << count << " sum " << sum << " calculation " << calculatioPixTotal(rotate, piece_size, unpiece) << " Min " << Min << std::endl;
+			}
+			
+			if (Min < MinTotal)
+			{
+				MinTotal = Min;
+				result = unpiece;
+			}
 		}
-		
-		if (Min < MinTotal)
-		{
-			MinTotal = Min;
-			result = unpiece;
-		}
+
+		count++;
 	}
 
-	//for (int i = 0; i < Unfinished_piece.size(); i++)
-	//{
-	//	cv::Mat a = Unfinished_piece[i];
-	//	std::cout << a.cols << " " << a.rows << std::endl;
-	//	cv::imshow("a", a);
-	//	cv::waitKey(0);
-	//}
 
-	cv::imshow("piece_00", piece_00);
-	cv::imshow("result", result);
+	cv::hconcat(RestoreImage, result, RestoreImage);
+	cv::imshow("Restore", RestoreImage);
 	cv::waitKey(0);
 
-	//std::cout << pixelTotal_U << std::endl;
-	//std::cout << pixelTotal_L << std::endl;
-	//std::cout << pixelTotal_D << std::endl;
-	//std::cout << pixelTotal_R << std::endl;
 
 	return;
 }
