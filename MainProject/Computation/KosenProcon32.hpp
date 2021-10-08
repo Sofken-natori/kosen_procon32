@@ -4,6 +4,7 @@
 #include<algorithm>
 #include<vector>
 #include<cstdio>
+#include<random>
 #include<fstream>
 #include<opencv2/opencv.hpp>
 #include<curl.h>
